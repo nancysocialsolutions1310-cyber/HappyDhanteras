@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शुभकामना लिंक बनाएँ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* BASE & THEME STYLES (Deep Religious Feeling) */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #5d2b2b; 
+            background-image: linear-gradient(180deg, #5d2b2b 0%, #7d3f3f 100%);
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 90%; 
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); 
+            border: 2px solid #ffcc80; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #ffd700; 
+            margin-bottom: 20px;
+        }
+        
+        /* --- INLINE AD CONTAINER CSS --- */
+        .inline-ad-container {
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 5px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 0;
+            overflow: hidden;
+        }
+        /* ------------------------------- */
+
+        /* --- IMAGE & LED BLOB BORDER --- */
+        .sparkle-border {
+            position: relative;
+            padding: 0; 
+            border-radius: 8px;
+            display: inline-block;
+            overflow: hidden;
+            margin-bottom: 20px;
+            max-width: 100%; 
+            
+            box-shadow: 
+                0 0 0 5px #F00,
+                0 0 0 10px #FF0000,    
+                0 0 0 15px rgba(255,0,0,0.5);
+            animation: led-blob-blink 0.8s infinite alternate; 
+        }
+
+        .sparkle-border img {
+            width: 100%; 
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* NEW LED BLOB BLINKING ANIMATION */
+        @keyframes led-blob-blink {
+            0% {
+                box-shadow: 
+                    0 0 0 5px #F00,         
+                    0 0 0 10px #FF0000,    
+                    0 0 0 15px rgba(255,0,0,0.5);
+            }
+            33% {
+                box-shadow: 
+                    0 0 0 5px #00F,         
+                    0 0 0 10px #0000FF,    
+                    0 0 0 15px rgba(0,0,255,0.5);
+            }
+            66% {
+                box-shadow: 
+                    0 0 0 5px #FF0,         
+                    0 0 0 10px #FFFF00,    
+                    0 0 0 15px rgba(255,255,0,0.5);
+            }
+            100% {
+                box-shadow: 
+                    0 0 0 5px #F00,         
+                    0 0 0 10px #FF0000,    
+                    0 0 0 15px rgba(255,0,0,0.5);
+            }
+        }
+        
+        .animate-effect {
+            /* Since the toggle button is removed, we'll keep the animation running automatically */
+            animation: pulse 1s infinite alternate, led-blob-blink 0.8s infinite alternate; 
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.03); opacity: 0.95; }
+        }
+        
+        h1 { 
+            color: #ff9800; 
+            margin-bottom: 10px; 
+            font-size: 2.2em; 
+            text-shadow: 1px 1px 2px #000; 
+            font-weight: bold; 
+        }
+        
+        p { 
+            color: #ffd700; 
+            margin-bottom: 5px; 
+            font-size: 1em; 
+        }
+        
+        @media (min-width: 600px) {
+            h1 { font-size: 2.5em; }
+            p { font-size: 1.1em; }
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 12px; 
+            margin: 10px 0 20px 0;
+            border: 1px solid #ffcc80;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: left;
+            background-color: #fff; 
+            color: #333;
+        }
+        
+        /* WhatsApp Share Button Style */
+        .share-btn {
+            background: linear-gradient(180deg, #25D366 0%, #128C7E 100%);
+            color: white; 
+            padding: 15px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0px; 
+            width: 100%;
+            box-shadow: 0 4px 0 #075E54; 
+            transition: background-color 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: none;
+        }
+        
+        .share-btn i { font-size: 24px; margin-right: 10px; }
+        .share-btn:active { box-shadow: 0 1px 0 #075E54; transform: translateY(3px); }
+
+        /* RECIPIENT VIEW STYLES */
+        .recipient-message { display: none; flex-direction: column; align-items: center; text-align: center; }
+        .recipient-message h1 { color: #ffffff; margin-top: 20px; font-size: 2em; text-shadow: 1px 1px 3px #000; }
+        .recipient-message p { font-size: 1.4em; color: #ffeb3b; font-weight: bold; text-shadow: 1px 1px 2px #000; margin-bottom: 20px; }
+        .recipient-message h2 { color: #ffd700; font-size: 1.1em; }
+
+        /* --- FIRECRACKER EFFECT --- */
+        #fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            display: none; 
+        }
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #FF0;
+            border-radius: 50%;
+            opacity: 0;
+            animation: firework-anim 2s ease-out forwards;
+        }
+
+        @keyframes firework-anim {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; box-shadow: 0 0 50px 20px var(--color); }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="fireworks-container"></div>
+
+    <div class="container" id="generatorContainer">
+        
+        <div class="sparkle-border" id="generatorImageBorder">
+            <img src="shubhdhanteras.jpg" alt="Dhanteras Image">
+        </div>
+
+        <h1>धनतेरस की हार्दिक शुभकामनाएं</h1>
+        
+        <p>आपको और आपके परिवार को धनतेरस की शुभकामनाएँ!</p>
+        <p>आपका शुभ नाम:</p>
+        <input type="text" id="senderNameInput" placeholder="यहाँ अपना नाम लिखें">
+        
+        <button class="share-btn" onclick="generateLink()">
+            <i class="fab fa-whatsapp"></i> शुभकामना लिंक बनाएँ व शेयर करें
+        </button>
+
+        <div class="inline-ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '16a502080d5a846fc5b18c305ec9b6b7',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/16a502080d5a846fc5b18c305ec9b6b7/invoke.js"></script>
+        </div>
+        <div id="linkOutput"></div>
+
+    </div>
+
+    <div class="container recipient-message" id="greetingContainer">
+        
+        <div class="sparkle-border">
+            <img src="laxmi.jpg" alt="Diwali Gods Animation" id="greetingImage">
+        </div>
+
+        <h1 id="greetingText"></h1>
+        
+        <p id="senderMessage"></p>
+        
+        <h2 style="font-weight: normal;">धन, धान्य और सुख-समृद्धि आपके जीवन में हमेशा बनी रहे।</h2>
+
+        <button class="share-btn" onclick="window.location.href = window.location.pathname" style="margin-top: 20px;">
+            आगे शुभकामनाएँ भेजने के लिए नया लिंक बनाएँ
+        </button>
+        
+        <div class="inline-ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '16a502080d5a846fc5b18c305ec9b6b7',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/16a502080d5a846fc5b18c305ec9b6b7/invoke.js"></script>
+        </div>
+        </div>
+
+
+    <script>
+        const FIREWORK_COLORS = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff', '#fff'];
+        
+        // --- FIREWORKS FUNCTIONS (Max intensity) ---
+        function createFirework() {
+            const container = document.getElementById('fireworks-container');
+            if (!container || container.style.display === 'none') return;
+            
+            const numSparks = 30; 
+            const centerX = Math.random() * window.innerWidth;
+            const centerY = Math.random() * window.innerHeight * 0.9; 
+            const color = FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)];
+
+            for (let i = 0; i < numSparks; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                
+                const spread = Math.random() * 250 + 100; 
+                const angle = Math.random() * 360;
+                
+                const x = centerX + spread * Math.cos(angle * Math.PI / 180);
+                const y = centerY + spread * Math.sin(angle * Math.PI / 180);
+
+                firework.style.left = `${centerX}px`;
+                firework.style.top = `${centerY}px`;
+                firework.style.setProperty('--x', `${x - centerX}px`);
+                firework.style.setProperty('--y', `${y - centerY}px`);
+                firework.style.setProperty('--color', color);
+
+                container.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 2500);
+            }
+        }
+
+        let fireworkInterval;
+        let isFireworksRunning = false;
+
+        function startFireworks() {
+            if (isFireworksRunning) return;
+
+            const container = document.getElementById('fireworks-container');
+            if(container) container.style.display = 'block';
+            
+            // Initial burst
+            for(let i = 0; i < 10; i++) {
+                setTimeout(createFirework, i * 100);
+            }
+
+            fireworkInterval = setInterval(createFirework, 400); // High frequency
+            isFireworksRunning = true;
+        }
+
+        function stopFireworks() {
+            clearInterval(fireworkInterval);
+            document.getElementById('fireworks-container').style.display = 'none';
+            isFireworksRunning = false;
+        }
+
+        // --- INIT FUNCTION ---
+        function init() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get('sender');
+
+            if (senderName) {
+                // RECIPIENT VIEW (Greeting Page)
+                document.getElementById('generatorContainer').style.display = 'none';
+                document.getElementById('greetingContainer').style.display = 'flex';
+                
+                const decodedName = decodeURIComponent(senderName);
+                
+                document.getElementById('greetingText').innerText = `Happy Dipawali from`;
+                document.getElementById('senderMessage').innerHTML = `**${decodedName}**! ✨`;
+
+                // Apply image pulsing effect
+                document.getElementById('greetingImage').classList.add('animate-effect');
+                
+                // START FIRECRACKERS ON GREETING PAGE
+                startFireworks();
+
+            } else {
+                // SENDER VIEW (Generator Page)
+                document.getElementById('generatorContainer').style.display = 'flex';
+                document.getElementById('greetingContainer').style.display = 'none';
+
+                // START FIRECRACKERS ON GENERATOR PAGE TOO
+                startFireworks();
+
+                // Start image pulsing effect on generator page as well
+                document.getElementById('generatorImageBorder').classList.add('animate-effect');
+            }
+        }
+
+        // --- GENERATELINK FUNCTION (Web Share Logic) ---
+        async function generateLink() {
+            const senderName = document.getElementById('senderNameInput').value.trim();
+            if (!senderName) {
+                alert("कृपया अपना नाम लिखें (Please enter your name).");
+                return;
+            }
+
+            const baseURL = window.location.origin + window.location.pathname; 
+            const personalizedLink = `${baseURL}?sender=${encodeURIComponent(senderName)}`;
+            
+            const outputDiv = document.getElementById('linkOutput');
+            outputDiv.innerHTML = personalizedLink;
+            outputDiv.style.display = 'block';
+            
+            copyToClipboard(personalizedLink);
+            
+            const shareMessage = `आपको ${senderName} की ओर से दीपावली की हार्दिक शुभकामनाएँ! ✨ इस लिंक पर क्लिक करके मेरी शुभकामनाएँ देखें:`;
+            
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Happy Diwali',
+                        text: shareMessage,
+                        url: personalizedLink
+                    });
+                } catch (error) {
+                    alert("लिंक कॉपी हो गया है! अब आप इसे मैन्युअल रूप से शेयर कर सकते हैं।");
+                }
+            } else {
+                alert("लिंक बन गया और कॉपी हो गया! अब मैन्युअल रूप से शेयर करें।");
+            }
+        }
+
+        // --- Helper Functions ---
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+        }
+        
+        // Removed the function toggleAnimation() as the button is gone
+        // The animations will now run automatically and continuously.
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>
