@@ -346,7 +346,7 @@
                 const decodedName = decodeURIComponent(senderName);
                 
                 document.getElementById('greetingText').innerText = `धनतेरस की हार्दिक शुभकामनाएँ`;
-                document.getElementById('senderMessage').innerHTML = `**${decodedName}**! ✨`;
+                document.getElementById('senderMessage').innerHTML = `✨${decodedName}✨`;
 
                 // Apply image pulsing effect
                 const greetingImageBorder = document.querySelector('#greetingContainer .sparkle-border');
@@ -385,7 +385,7 @@
             
             copyToClipboard(personalizedLink);
             
-            const shareMessage = `आपको ${senderName} की ओर से दीपावली की हार्दिक शुभकामनाएँ! ✨ इस लिंक पर क्लिक करके मेरी शुभकामनाएँ देखें:`;
+            const shareMessage = `आपको ${senderName} की ओर से धनतेरस की हार्दिक शुभकामनाएं! ✨ इस लिंक पर क्लिक करके मेरी शुभकामनाएँ देखें:`;
             
             if (navigator.share) {
                 try {
@@ -417,4 +417,5 @@
 </body>
 
 </html>
+
 
