@@ -47,6 +47,8 @@
             align-items: center;
             padding: 5px 0;
             overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.1); /* Added for visibility */
+            border-radius: 5px;
         }
         /* ------------------------------- */
 
@@ -62,7 +64,7 @@
             
             box-shadow: 
                 0 0 0 5px #F00,
-                0 0 0 10px #FF0000,    
+                0 0 0 10px #FF0000, 
                 0 0 0 15px rgba(255,0,0,0.5);
             animation: led-blob-blink 0.8s infinite alternate; 
         }
@@ -79,32 +81,31 @@
         @keyframes led-blob-blink {
             0% {
                 box-shadow: 
-                    0 0 0 5px #F00,         
-                    0 0 0 10px #FF0000,    
+                    0 0 0 5px #F00, 
+                    0 0 0 10px #FF0000, 
                     0 0 0 15px rgba(255,0,0,0.5);
             }
             33% {
                 box-shadow: 
-                    0 0 0 5px #00F,         
-                    0 0 0 10px #0000FF,    
+                    0 0 0 5px #00F, 
+                    0 0 0 10px #0000FF, 
                     0 0 0 15px rgba(0,0,255,0.5);
             }
             66% {
                 box-shadow: 
-                    0 0 0 5px #FF0,         
-                    0 0 0 10px #FFFF00,    
+                    0 0 0 5px #FF0, 
+                    0 0 0 10px #FFFF00, 
                     0 0 0 15px rgba(255,255,0,0.5);
             }
             100% {
                 box-shadow: 
-                    0 0 0 5px #F00,         
-                    0 0 0 10px #FF0000,    
+                    0 0 0 5px #F00, 
+                    0 0 0 10px #FF0000, 
                     0 0 0 15px rgba(255,0,0,0.5);
             }
         }
         
         .animate-effect {
-            /* Since the toggle button is removed, we'll keep the animation running automatically */
             animation: pulse 1s infinite alternate, led-blob-blink 0.8s infinite alternate; 
         }
 
@@ -201,7 +202,9 @@
             100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; box-shadow: 0 0 50px 20px var(--color); }
         }
     </style>
-</head>
+
+    <script type="text/javascript" src="https://www.effectivegatecpm.com/a8jgr15uq?key=cda3b75e327d429913fe0decd408f9de"></script>
+    </head>
 <body>
     
     <div id="fireworks-container"></div>
@@ -212,7 +215,7 @@
             <img src="shubhdhanteras.jpg" alt="Dhanteras Image">
         </div>
 
-        <h1>धनतेरस की हार्दिक शुभकामनाएं</h1>
+        <h1>धनतेरस की हार्दिक शुभकामनाएँ</h1>
         
         <p>आपको और आपके परिवार को धनतेरस की शुभकामनाएँ!</p>
         <p>आपका शुभ नाम:</p>
@@ -266,7 +269,7 @@
             </script>
             <script type="text/javascript" src="//www.highperformanceformat.com/16a502080d5a846fc5b18c305ec9b6b7/invoke.js"></script>
         </div>
-        </div>
+    </div>
 
 
     <script>
@@ -346,7 +349,8 @@
                 document.getElementById('senderMessage').innerHTML = `**${decodedName}**! ✨`;
 
                 // Apply image pulsing effect
-                document.getElementById('greetingImage').classList.add('animate-effect');
+                const greetingImageBorder = document.querySelector('#greetingContainer .sparkle-border');
+                if(greetingImageBorder) greetingImageBorder.classList.add('animate-effect');
                 
                 // START FIRECRACKERS ON GREETING PAGE
                 startFireworks();
@@ -391,7 +395,7 @@
                         url: personalizedLink
                     });
                 } catch (error) {
-                    alert("लिंक कॉपी हो गया है! अब आप इसे मैन्युअल रूप से शेयर कर सकते हैं।");
+                    alert("लिंक कॉपी हो गया है! अब आप इसे मैन्युअल रूप से WhatsApp पर शेयर कर सकते हैं।");
                 }
             } else {
                 alert("लिंक बन गया और कॉपी हो गया! अब मैन्युअल रूप से शेयर करें।");
@@ -408,9 +412,6 @@
             document.body.removeChild(tempInput);
         }
         
-        // Removed the function toggleAnimation() as the button is gone
-        // The animations will now run automatically and continuously.
-
         window.onload = init;
     </script>
 </body>
