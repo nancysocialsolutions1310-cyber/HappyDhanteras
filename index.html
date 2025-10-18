@@ -344,9 +344,10 @@
                 document.getElementById('greetingContainer').style.display = 'flex';
                 
                 const decodedName = decodeURIComponent(senderName);
-                
-                document.getElementById('greetingText').innerText = `धनतेरस की हार्दिक शुभकामनाएँ`;
+
                 document.getElementById('senderMessage').innerHTML = `✨${decodedName}✨`;
+                document.getElementById('greetingText').innerText = `की ओर से धनतेरस की हार्दिक शुभकामनाएँ`;
+
 
                 // Apply image pulsing effect
                 const greetingImageBorder = document.querySelector('#greetingContainer .sparkle-border');
@@ -417,5 +418,6 @@
 </body>
 
 </html>
+
 
 
